@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+[ -z "$1" ] && acc="-a" || acc="$1"
+
+echo -n "Master Password: "
+read -s PWD
+export MBSYNC_MASTER_PASSWORD=$PWD
+
+mbsync -V -c inboxes.cfg $acc
+unset MBSYNC_MASTER_PASSWORD
+

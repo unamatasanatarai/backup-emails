@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+case "$1" in
+    e)
+        [ ! -z "$2" ] && echo "$2" | openssl enc -e -des3 -base64 -aes256 -pass pass:"$MBSYNC_MASTER_PASSWORD"
+    ;;
+
+    d)
+        [ ! -z "$2" ] && echo "$2" | openssl enc -d -des3 -base64 -aes256 -pass pass:"$MBSYNC_MASTER_PASSWORD"
+    ;;
+
+    *)
+        echo "usage: pwd e|d [plaintext|encryptedtext]"
+    ;;
+esac
